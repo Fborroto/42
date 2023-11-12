@@ -18,7 +18,7 @@ void	ft_image_to_win(t_data **data, int x, int y, void *img)
 }
 
 void	open_images(t_data **data)
-{
+{	
 	int		img_x;
 	int		img_y;
 
@@ -76,10 +76,8 @@ void	ft_moves(t_data ***data)
 	str2 = join_move("Moves: ", str);
 	mlx_put_image_to_window((**data)->mlx, (**data)->win,
 		(**data)->n_img, 0, (**data)->win_y * 64);
-	mlx_put_image_to_window((**data)->mlx, (**data)->win,
-		(**data)->n_img, 64, (**data)->win_y * 64);
 	mlx_string_put((**data)->mlx, (**data)->win, 0,
-		(**data)->win_y * 64, 0xccccff, str2);
+		(**data)->win_y * 64 + 10, 0xccccff, str2);
 	free(str);
 	free(str2);
 }

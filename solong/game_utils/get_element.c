@@ -43,7 +43,7 @@ void	ft_check_el(t_data **data)
 	}
 	if ((*data)->el->collectible == 0 || (*data)->el->exit
 		== 0 || (*data)->el->player != 1)
-		ft_error_free("Error\nMap invalid elements\n", (*data)->map);
+		ft_error_free("Error\nMap missing el\n", (*data)->map);
 }
 
 void	ft_check_non_el(t_data **data)

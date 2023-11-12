@@ -22,7 +22,7 @@ static int	ft_countstr(char const *s, char c)
 	while (s[i])
 	{
 		if (s[i] == c)
-			i++;
+		i++;
 		else
 		{
 			count++;
@@ -50,15 +50,6 @@ static char	*ft_strcpy(char *dest, const char *src, unsigned int size)
 	return (dest);
 }
 
-static int	ft_check(char *s, char c, int i)
-{
-	if (i == 0 && s[i] == c)
-		ft_error("Error:\n Invalid Map\n");
-	if (i > 0 && i < ft_strlen(s) && (s[i + 1] == c || s[i - 1] == c))
-		ft_error("Error:\n Invalid Map\n");
-	return (1);
-}
-
 static char	**ft_strings(char **s2, char const *s, char c)
 {
 	int	i[2];
@@ -69,14 +60,14 @@ static char	**ft_strings(char **s2, char const *s, char c)
 	while (s[i[0]])
 	{
 		if (s[i[0]] == c)
-			i[0] += ft_check((char *)s, c, i[0]);
+			i[0]++;
 		else
 		{
 			i[1] = 0;
 			while (s[i[0]] && s[i[0]] != c)
 			{
-				i[1]++;
-				i[0]++;
+			i[1]++;
+			i[0]++;
 			}
 			s2[count] = (char *) malloc(sizeof (char) * (i[1] + 1));
 			if (!s2[count])
@@ -101,5 +92,6 @@ char	**ft_split(char *s, char c)
 		return (0);
 	split = ft_strings(split, s, c);
 	split[size] = 0;
+	free(s);
 	return (split);
 }

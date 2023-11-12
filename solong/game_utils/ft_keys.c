@@ -19,6 +19,11 @@ void	ft_move(int key, t_data **data)
 
 	x = (*data)->el->player_x;
 	y = (*data)->el->player_y;
+	if (key == 13)
+	{
+		mlx_destroy_window((*data)->mlx, (*data)->win);
+		ft_free_data(data);
+	}
 	if ((key == UP && (*data)->map[y - 1][x] != '1') && (
 		(*data)->map[y - 1][x] != 'E' || (*data)->el->collectible == 0))
 		ft_put_sprite(data, (*data)->el->player_y - 1, (*data)->el->player_x);

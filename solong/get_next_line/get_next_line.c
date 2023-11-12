@@ -47,7 +47,7 @@ char	*get_theline(char *nextline)
 	if (!nextline[i])
 		return (NULL);
 	while (nextline[i] && nextline[i - 1] != '\n')
-		i ++;
+	i ++;
 	theline = (char *)malloc(sizeof(char) * (i + 1));
 	if (!theline)
 		return (NULL);

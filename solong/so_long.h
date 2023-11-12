@@ -15,24 +15,26 @@
 
 # ifdef __APPLE__
 #  include "mlx.h"
-#  define UP 13
-#  define DOWN 1
-#  define LEFT 0
-#  define RIGHT 2
-#  define ESC 53
+#  define  UP 13
+#  define  DOWN 1
+#  define  LEFT 0
+#  define  RIGHT 2
+#  define  ESC 53
 
 # elif __linux__
 #  include "./mlx_linux/mlx.h"
-#  define UP 119
-#  define DOWN 115
-#  define LEFT 97
-#  define RIGHT 100
-#  define ESC 65307 
+#  define  UP 119
+#  define  DOWN 115
+#  define  LEFT 97
+#  define  RIGHT 100
+#  define  ESC 65307 
 # endif
 
 # include <stdlib.h>
 # include "./get_next_line/get_next_line.h"
+# include <stdio.h>
 # include <unistd.h>
+# include <string.h>
 
 typedef struct s_elements
 {
@@ -67,6 +69,7 @@ typedef struct s_data
 
 int		ft_strlen(char *s);
 char	*ft_strchr( char *s, int c);
+char	*ft_strjoin(char *s1, char *s2);
 char	**ft_split(char *s, char c);
 void	ft_error_free(char *str, char **map);
 void	ft_error(char *str);

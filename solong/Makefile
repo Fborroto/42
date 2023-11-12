@@ -23,22 +23,12 @@ CC = gcc
 RM	= rm -f
 
 CFLAGS = -Wall -Wextra -Werror
-UNAME_S := $(shell uname -s)
-
-ifeq ($(UNAME_S),Linux)
-LINKS += -Lmlx_linux ./mlx_linux/libmlx.a -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
-FLAGS_LINUX = -I/usr/include -Imlx_linux -O3
-endif
-
-ifeq ($(UNAME_S),Darwin)
-LINKS += -lmlx -framework OpenGL -framework Appkit
-endif
 
 %.c%.o:
-		$(CC)  -c $< -o $@
+		$(CC)  -I/usr/include -Imlx_linux -O3 -c $< -o $@
 		
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) $(LINKS) -o $(NAME)
+	$(CC) $(OBJS) -Lmlx_linux ./mlx_linux/libmlx.a -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 all: ${NAME}
 
@@ -52,7 +42,5 @@ re:	fclean all
 
 leak: all
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt ./so_long map0.ber
-leaks: all
-	@Leaks --atExit -- ./$(NAME) map0.ber 
 
 .PHONY: all fclean clean re

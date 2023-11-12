@@ -38,10 +38,7 @@ char	**ft_get_map(char *str)
 	int		fd;
 	char	*map;
 	char	*line;
-	char	**mapped;
 
-	map = malloc(sizeof(char) * 1);
-	line = "";
 	fd = open(str, O_RDONLY);
 	if (fd < 0)
 		ft_error("Error\nMap not found\n");
@@ -57,7 +54,5 @@ char	**ft_get_map(char *str)
 	free(line);
 	if (!map)
 		ft_error("Error\nMap not found\n");
-	mapped = ft_split(map, '\n');
-	free(map);
-	return (mapped);
+	return (ft_split(map, '\n'));
 }

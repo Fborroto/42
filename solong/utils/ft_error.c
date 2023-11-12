@@ -25,6 +25,7 @@ void	ft_error_free(char *str, char **map)
 	i = 0;
 	while (map[i])
 	{
+		printf("%s\n", map[i]);
 		free(map[i]);
 		i++;
 	}

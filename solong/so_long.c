@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 			data.win_x * 64, data.win_y * 64 + 50, "so_long");
 	ft_draw_map(&data);
 	mlx_string_put(data.mlx, data.win, 0,
-		data.win_y * 64, 0xccccff, "Moves: 0");
+		data.win_y * 64 + 10, 0xccccff, "Moves: 0");
 	mlx_key_hook(data.win, *ft_key_hook, &data);
 	mlx_hook(data.win, 17, 0, ft_close, (void *)&data);
 	mlx_loop_hook(data.mlx, *ft_loop_hook, &data);
